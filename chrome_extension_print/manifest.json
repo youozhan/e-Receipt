@@ -1,0 +1,57 @@
+{
+	"name": "Print",
+	"version": "0.0.2",
+	"manifest_version": 2,
+	"description": "__MSG_appDescription__",
+	"icons": {
+		"16": "images/icon-16.png",
+		"128": "images/icon-128.png"
+	},
+	"default_locale": "en",
+	"background": {
+		"scripts": [
+			"scripts/background.js"
+		]
+	},
+	"permissions": [
+		"tabs",
+		"http://*/*",
+		"https://*/*",
+		"pageCapture",
+		"storage",
+		"webRequest",
+		"*://*.google.com/"
+	],
+	"options_ui": {
+		"page": "options.html",
+		"chrome_style": true
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"https://myaccount.google.com/data-and-personalization"
+			],
+			"js": [
+				"scripts/jquery-3.3.1.slim.min.js",
+				"scripts/utils.js",
+				"scripts/contentscript.js"
+			],
+			"run_at": "document_end",
+			"all_frames": false
+		},
+		{
+			"matches": [
+				"https://adssettings.google.com/*"
+			],
+			"js": [
+				"scripts/utils.js",
+				"scripts/contentscript_ads.js"
+			],
+			"run_at": "document_end",
+			"all_frames": false
+		}
+	],
+	"omnibox": {
+		"keyword": "OMNIBOX-KEYWORD"
+	}
+}
