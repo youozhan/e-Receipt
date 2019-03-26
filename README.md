@@ -1,7 +1,8 @@
 # Chrome Extension YouTube Setting Analytics
-> Follow instructions below to create a receipt for  
-## Features
-- Automatically identify and download account and app settings that are related with your YouTube activities
+> Work in progress
+> A chrome extension reads your Google setting and YouTube history data and provide analytics about your activities in YouTube.
+## Requirements
+
 ## Instructions
 Download the zip file and load the extension to Chrome
 ![Install](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_01.gif)
