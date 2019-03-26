@@ -1,5 +1,6 @@
 # Chrome Extension YouTube Setting Analytics
 > Work in progress
+
 > A chrome extension reads your Google setting and YouTube history data and provide analytics about your activities in YouTube.
 ## Requirements
 
