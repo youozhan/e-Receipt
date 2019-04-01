@@ -26,6 +26,9 @@
 		"page": "options.html",
 		"chrome_style": true
 	},
+	"browser_action":{
+		"default_popup": "popup.html"
+	},
 	"content_scripts": [
 		{
 			"matches": [
@@ -68,6 +71,18 @@
 			"js": [
 				"scripts/utils.js",
 				"scripts/contentscript/purchase.js"
+			],
+			"run_at": "document_end",
+			"all_frames": false
+		},
+		{
+			"matches": [
+				"file://*/*watch-history.html",
+				"file://*/*watch-history.html?*"
+			],
+			"js": [
+				"scripts/utils.js",
+				"scripts/contentscript/watchhistory.js"
 			],
 			"run_at": "document_end",
 			"all_frames": false
