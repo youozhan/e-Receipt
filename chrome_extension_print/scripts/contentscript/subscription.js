@@ -16,4 +16,8 @@ subscriptionName.forEach ((value, i) => {
 
 })
 
-saveText("SubscriptionList.json", JSON.stringify(subscriptions))
+chrome.storage.local.set({'subscriptionStorageKey': JSON.stringify(subscriptions)}, function(){
+    console.log("subscription data stored")
+})
+
+// saveText("SubscriptionList.json", JSON.stringify(subscriptions))

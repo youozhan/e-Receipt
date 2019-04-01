@@ -21,4 +21,4 @@ chrome.storage.local.set({'purchaseStorageKey': JSON.stringify(purchases)}, func
     console.log("purchase data stored")
 })
 
-saveText("Purchases.json", JSON.stringify(purchases))
+// saveText("Purchases.json", JSON.stringify(purchases))

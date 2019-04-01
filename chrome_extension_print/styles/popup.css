@@ -1,6 +1,8 @@
 body {
     width: max-content;
     padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 8px;
 }
 
 #submit {

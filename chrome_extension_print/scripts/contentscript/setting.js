@@ -13,4 +13,9 @@ $(`${cssPaths.settingRow}:has(${cssPaths.settingData})`)
         // Add a dictionary entry to the settings collection
         .each((i, row) => settings[$(row).find(cssPaths.settingLabel).text()] = $(row).find(cssPaths.settingData).text())
 
-saveText('UserSettings.json', JSON.stringify(settings))
+
+chrome.storage.local.set({'settingStorageKey': JSON.stringify(settings)}, function(){
+    console.log("setting data stored")
+})
+
+// saveText('UserSettings.json', JSON.stringify(settings))
