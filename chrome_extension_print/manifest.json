@@ -34,7 +34,7 @@
 			"js": [
 				"scripts/jquery-3.3.1.slim.min.js",
 				"scripts/utils.js",
-				"scripts/contentscript.js"
+				"scripts/contentscript/setting.js"
 			],
 			"run_at": "document_end",
 			"all_frames": false
@@ -45,7 +45,29 @@
 			],
 			"js": [
 				"scripts/utils.js",
-				"scripts/contentscript_ads.js"
+				"scripts/contentscript/ads.js"
+			],
+			"run_at": "document_end",
+			"all_frames": false
+		},
+		{
+			"matches": [
+				"https://www.youtube.com/feed/channels"
+			],
+			"js": [
+				"scripts/utils.js",
+				"scripts/contentscript/subscription.js"
+			],
+			"run_at": "document_end",
+			"all_frames": false
+		},
+		{
+			"matches": [
+				"https://www.youtube.com/feed/purchases"
+			],
+			"js": [
+				"scripts/utils.js",
+				"scripts/contentscript/purchase.js"
 			],
 			"run_at": "document_end",
 			"all_frames": false
