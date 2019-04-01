@@ -5,21 +5,56 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="styles/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" type="text/css" media="screen" href="styles/popup.css">
+
 </head>
 
 <body>
-    <ul>
-        <li>
-            <a href="https://myaccount.google.com/data-and-personalization">Google data and personalization</a>
-        </li>
-        <li>
-            <a href="https://adssettings.google.com">Google Ad personalization</a>
-        </li>
-    </ul>
-    <button id='submit'>Generate Receipt</button>
+    <p>
+        <label>
+            <input id="indeterminate-checkbox" type="checkbox" />
+            <span class="todolist"><a href="https://myaccount.google.com/data-and-personalization">Get Google data and
+                    personalization setting</a></span>
+        </label>
+    </p>
+    <p>
+        <label>
+            <input id="indeterminate-checkbox" type="checkbox" />
+            <span class="todolist"><a href="https://adssettings.google.com">Get Google Ad personalization
+                    setting</a></span>
+        </label>
+    </p>
+    <p>
+        <label>
+            <input id="indeterminate-checkbox" type="checkbox" />
+            <span class="todolist"><a href="https://www.youtube.com/feed/purchases">Check YouTube purchase</a></span>
+        </label>
+    </p>
+    <p>
+        <label>
+            <input id="indeterminate-checkbox" type="checkbox" />
+            <span class="todolist"><a href="https://www.youtube.com/feed/channels">Check YouTube subscription</a></span>
+        </label>
+    </p>
+    <p>
+        <label>
+            <input id="indeterminate-checkbox" type="checkbox" />
+            <span class="todolist">Upload YouTube search history</span>
+        </label>
+    </p>
+    <p>
+        <label>
+            <input id="indeterminate-checkbox" type="checkbox" />
+            <span class="todolist">Upload YouTube watch history</span>
+        </label>
+    </p>
+    <!-- <button id='submit'>Generate Receipt</button> -->
+    <a class="waves-effect waves-light btn-small" id='submit'>Generate Receipt</a>
     <script src="scripts/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script src="scripts/popup.js"></script>
 </body>
 

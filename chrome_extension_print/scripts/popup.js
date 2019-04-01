@@ -6,7 +6,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $('body').on('click', 'button#submit', function () {
+    $('body').on('click', 'a#submit', function () {
         chrome.tabs.create({
             url: chrome.runtime.getURL("receipt.html")
         });
