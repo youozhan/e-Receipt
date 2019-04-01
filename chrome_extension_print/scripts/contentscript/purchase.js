@@ -17,4 +17,8 @@ purchases_raw.forEach( (value, i) => {
 
 }) 
 
+chrome.storage.local.set({'purchaseStorageKey': JSON.stringify(purchases)}, function(){
+    console.log("purchase data stored")
+})
+
 saveText("Purchases.json", JSON.stringify(purchases))
