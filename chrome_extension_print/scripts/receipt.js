@@ -1,6 +1,10 @@
 $(document).ready(() => {
-    chrome.storage.local.get(['purchaseStorageKey'], (result) => {
 
+    var dt = new Date()
+    document.getElementById("datetime").innerHTML = dt.toLocaleString();
+
+    chrome.storage.local.get(['purchaseStorageKey'], (result) => {
+        // Need to update [0] to object list
         var purchaseData = JSON.parse(result['purchaseStorageKey'])[0]
 
         if (purchaseData) {
@@ -16,18 +20,6 @@ $(document).ready(() => {
 
     chrome.storage.local.get(['subscriptionStorageKey'], (result) => {
 
-        // var subscriptionData = JSON.parse(result['subscriptionStorageKey'])
-
-        // var items = []
-
-        // subscriptionData.forEach((item) => {
-        //     items.push(`<tr><td>${item.name}</td><td>${(item.id)[0]}</td></tr>`)
-        // })
-
-        // $('table#subscriptionlist').append(items.join(''))
-
-        // console.log("subscription data get")
-
         var subscriptionData = JSON.parse(result['subscriptionStorageKey'])
 
         // Only search for a slice of data to avoid throttling
@@ -38,9 +30,20 @@ $(document).ready(() => {
                     const data = $(socialBladeHTML)
 
                     const videoGrade = data.find('#afd-header-total-grade').text()
-                    const monthlyEarn = data.find('p[style*="font-size: 1.4em; color:#41a200; font-weight: 600; padding-top: 20px;"]')[0].innerHTML
 
-                    $('table#subscriptionlist').append(`<tr><td>${item.name}</td><td>${monthlyEarn}</td></tr>`)
+                    const monthlyEarn = data.find('p[style*="font-size: 1.4em; color:#41a200; font-weight: 600; padding-top: 20px;"]')[0].innerHTML
+                    const monthlyEarnLimits = monthlyEarn.split("-")
+                                                .map(v=>v.replace(/[$]/g, '').trim())
+                                                .map(v => v.endsWith('K')? parseFloat(v.slice(0, -1))*1000 : parseInt(v))
+
+                    const amountSubscriber = data.find('div.YouTubeUserTopInfo span')[5].innerHTML
+
+                    const monthlyEarnPerSub = monthlyEarnLimits
+                                                .map(v => v/parseInt(amountSubscriber))
+                                                .map(v => '$' + v.toFixed(5))
+                                                .join(' - ')
+
+                    $('table#subscriptionlist').append(`<tr><td>${item.name}</td><td>${monthlyEarnPerSub}</td></tr>`)
                 })
             }, 500*i)
         })
