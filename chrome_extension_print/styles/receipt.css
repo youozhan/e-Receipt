@@ -1,6 +1,24 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 12px;
+    width: 320px;
+    background-color: #eee;
+}
+
+.invoice-box {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .10);
+    max-width: 320px;
+    margin: auto;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.involce-box table{
     width: 300px;
 }
 
