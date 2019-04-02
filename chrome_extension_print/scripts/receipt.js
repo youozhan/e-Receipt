@@ -16,17 +16,34 @@ $(document).ready(() => {
 
     chrome.storage.local.get(['subscriptionStorageKey'], (result) => {
 
+        // var subscriptionData = JSON.parse(result['subscriptionStorageKey'])
+
+        // var items = []
+
+        // subscriptionData.forEach((item) => {
+        //     items.push(`<tr><td>${item.name}</td><td>${(item.id)[0]}</td></tr>`)
+        // })
+
+        // $('table#subscriptionlist').append(items.join(''))
+
+        // console.log("subscription data get")
+
         var subscriptionData = JSON.parse(result['subscriptionStorageKey'])
 
-        var items = []
+        // Only search for a slice of data to avoid throttling
+        subscriptionData.forEach((item, i) => {
+            setTimeout(() => {
+                $.get('https://socialblade.com/youtube/channel/' + (item.id)[0], (socialBladeHTML) => {
 
-        subscriptionData.forEach((item) => {
-            items.push(`<tr><td>${item.name}</td><td>${(item.id)[0]}</td></tr>`)
+                    const data = $(socialBladeHTML)
+
+                    const videoGrade = data.find('#afd-header-total-grade').text()
+                    const monthlyEarn = data.find('p[style*="font-size: 1.4em; color:#41a200; font-weight: 600; padding-top: 20px;"]')[0].innerHTML
+
+                    $('table#subscriptionlist').append(`<tr><td>${item.name}</td><td>${monthlyEarn}</td></tr>`)
+                })
+            }, 500*i)
         })
-
-        $('table#subscriptionlist').append(items.join(''))
-
-        console.log("subscription data get")
 
     })
 
