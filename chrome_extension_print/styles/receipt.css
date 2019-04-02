@@ -7,3 +7,9 @@ th {
     text-align: left;
     padding: 20px 0 0 0;
 }
+
+#logo {
+    width:100%; 
+    max-width:300px;
+    vertical-align: top;
+}
