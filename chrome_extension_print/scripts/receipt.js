@@ -37,10 +37,10 @@ $(document).ready(() => {
         var items = []
 
         Object.keys(settingData).forEach((key) => {
-            items.push(`<li>${key}: ${settingData[key]}</li>`)
+            items.push(`<tr>${key}: ${settingData[key]}</tr>`)
         })
 
-        $('div#settinglist ul').append(items.join(''))
+        $('table#settinglist').append(items.join(''))
 
         console.log("setting data get")
         console.log(JSON.parse(result['settingStorageKey']))
@@ -49,9 +49,21 @@ $(document).ready(() => {
 
     chrome.storage.local.get(['adsStorageKey'], (result) => {
 
-        var adsData = JSON.parse(result['adsStorageKey'])[0]
-        $('#aname').text($('#aname').text() + adsData)
+        var adsData = JSON.parse(result['adsStorageKey'])
+
+        var items = []
+
+        Object.keys(adsData).forEach((key) => {
+            items.push(`<tr>${key}: ${adsData[key]}</tr>`)
+        })
+
+        $('table#adslist').append(items.join(''))
+
         console.log("ads data get")
+
+        // var adsData = JSON.parse(result['adsStorageKey'])[0]
+        // $('#aname').text($('#aname').text() + adsData)
+        // console.log("ads data get")
 
     })
 })
