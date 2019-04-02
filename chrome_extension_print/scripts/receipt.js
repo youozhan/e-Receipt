@@ -37,7 +37,7 @@ $(document).ready(() => {
         var items = []
 
         Object.keys(settingData).forEach((key) => {
-            items.push(`<tr>${key}: ${settingData[key]}</tr>`)
+            items.push(`<tr><td>${key}</td><td>${settingData[key]}</td></tr>`)
         })
 
         $('table#settinglist').append(items.join(''))
@@ -54,16 +54,12 @@ $(document).ready(() => {
         var items = []
 
         Object.keys(adsData).forEach((key) => {
-            items.push(`<tr>${key}: ${adsData[key]}</tr>`)
+            items.push(`<tr><td>${adsData[key]}</td></tr>`)
         })
 
         $('table#adslist').append(items.join(''))
 
         console.log("ads data get")
-
-        // var adsData = JSON.parse(result['adsStorageKey'])[0]
-        // $('#aname').text($('#aname').text() + adsData)
-        // console.log("ads data get")
 
     })
 })

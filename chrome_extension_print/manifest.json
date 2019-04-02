@@ -20,7 +20,8 @@
 		"pageCapture",
 		"storage",
 		"webRequest",
-		"*://*.google.com/"
+		"*://*.google.com/",
+		"*://socialblade.com/youtube/channel/*"
 	],
 	"options_ui": {
 		"page": "options.html",
@@ -35,7 +36,7 @@
 				"https://myaccount.google.com/data-and-personalization"
 			],
 			"js": [
-				"scripts/jquery-3.3.1.slim.min.js",
+				"scripts/jquery-3.3.1.min.js",
 				"scripts/utils.js",
 				"scripts/contentscript/setting.js"
 			],
