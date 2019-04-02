@@ -7,21 +7,56 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="scripts/jquery-3.3.1.slim.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/receipt.css">
 </head>
 
 <body>
-    <div id="purchaselist">
-        <p id="pname"></p>
-        <p id="pprice"></p>
-    </div>
-    <div id="subscriptionlist">
-        <p id="sname"></p>
-    </div>
-    <div id="settinglist">
-        <p id="setname"></p>
-    </div>
-    <div id="adslist">
-        <p id="aname"></p>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="4">
+                    <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
+                </td>
+            </tr> 
+
+            <tr class="heading">
+                <td>SERVICE</td>
+                <td>PRICE</td>
+            </tr>
+            <tr><td colspan="4">=====================================</td></tr>
+            <tr class="details">
+                <td id="pname"></td>
+                <td id="pprice"></td>
+            </tr>
+
+            <tr class="heading">
+                <td>SUBSCRIBER</td>
+                <td>LABOR PRODUCTIVITY</td>
+            </tr>
+            <tr class="details">
+                <td id="sname"></td>
+                <td></td>
+            </tr>
+
+            <tr class="heading">
+                <td>PRIVACY USAGE</td>
+                <td></td>
+            </tr>
+            <tr class="details">
+                <td id="setname"></td>
+                <td></td>
+            </tr>
+
+            <tr class="heading">
+                <td>AD PERSONALIZATION</td>
+                <td></td>
+            </tr>
+            <tr class="details4">
+                <td id="aname"></td>
+                <td></td>
+            </tr>
+
+        </table>
     </div>
 
     <script src="scripts/receipt.js"></script>
