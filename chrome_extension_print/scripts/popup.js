@@ -1,15 +1,36 @@
+function syncCheckboxesWithStorage() {
+    //Check whether specific tasks are already finished
+    ['purchaseStorageKey', 'subscriptionStorageKey', 'settingStorageKey', 'adsStorageKey'].forEach(key => {
+        chrome.storage.local.get([key], (result) => {
+            if (result[key]) {
+                $('#' + key).prop('checked', true)
+            } else {
+                $('#' + key).prop('checked', false)
+            }
+        })
+    })
+}
+
 $(document).ready(function () {
-    $('body').on('click', 'a', function () {
+    $(this).on('click', 'a', function () {
         chrome.tabs.create({
             url: $(this).attr('href')
         });
-        return false;
+        return false
     });
 
-    $('body').on('click', 'a#submit', function () {
+    $(this).on('click', 'a#submit', function () {
         chrome.tabs.create({
             url: chrome.runtime.getURL("receipt.html")
         });
-        return false;
+        return false
     });
+
+    $(this).on('click', 'a#reset', function () {
+        chrome.storage.local.clear()
+        return false
+    });
+
+    syncCheckboxesWithStorage()
 });
+
