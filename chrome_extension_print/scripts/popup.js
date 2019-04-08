@@ -26,6 +26,11 @@ $(document).ready(function () {
         return false
     });
 
+    $(this).on('click', 'button#download', function () {
+        saveReceiptIntoData()
+        return false
+    })
+
     $(this).on('click', 'a#reset', function () {
         chrome.storage.local.clear()
         return false
