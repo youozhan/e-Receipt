@@ -1,36 +1,70 @@
 const glob = require('glob'),
-    fs = require('fs')
+    fs = require('fs'),
+    express = require('express')
 
-let settingsOnAmount = []
-let subscriptionOnAmount = []
-let adOnAmount = []
+app = express()
 
-glob(__dirname + '/data/*.json', {}, (err, files)=>{
-    files.forEach(file => {
-        
-        let rawdata = fs.readFileSync(file)
-        let profile = JSON.parse(rawdata)
-        let settingCount = 0
+app.use(express.json());
 
-        Object.keys(profile.settingStorageKey).forEach(key => {
-            if (profile.settingStorageKey[key] === "On") {
-                settingCount += 1
-            }
+//Global variables as counters
+let settingsOnAmounts = []
+let subscriptionOnAmounts = []
+let adOnAmounts = []
+
+
+function updateStats() {
+    glob(__dirname + '/data/*.json', {}, (err, files)=>{
+
+        settingsOnAmounts = []
+        subscriptionOnAmounts = []
+        adOnAmounts = []
+
+        files.forEach(file => {
+            
+            let rawdata = fs.readFileSync(file)
+            let profile = JSON.parse(rawdata)
+            let settingCount = 0
+    
+            Object.keys(profile.settingStorageKey).forEach(key => {
+                if (profile.settingStorageKey[key] === "On") {
+                    settingCount += 1
+                }
+            })
+    
+            // Accumulate all data from json data files
+            settingsOnAmounts.push(settingCount)
+            subscriptionOnAmounts.push(profile.subscriptionStorageKey.length)
+            adOnAmounts.push(profile.adsStorageKey.length)
         })
 
-        settingsOnAmount.push(settingCount)
-
-        subscriptionOnAmount.push(profile.subscriptionStorageKey.length)
-        adOnAmount.push(profile.adsStorageKey.length)
-
+        console.log("Stats updated on server")
     })
+}
 
-    console.log(toPercentile(settingsOnAmount))
-    console.log(toPercentile(subscriptionOnAmount))
-    console.log(toPercentile(adOnAmount))
 
+// Handler for uploading files using express-upload
+app.post('/upload', (req, res) => {
+
+    updateStats()
+
+    console.log(req.files.datafile) // the uploaded file object
 })
 
-function toPercentile(arr) {
-    return arr.map(amt => arr.filter(d => d<amt).length / arr.length)
+
+function getPercentile(amt, arr) {
+    return arr.filter(d => d<amt).length / arr.length
 }
+
+
+app.post('/perct', (req, res) => {
+    let curStat = req.body
+
+    res.send({
+        settingsOnAmount: getPercentile(curStat.settingsOnAmount, settingsOnAmounts),
+        subscriptionOnAmount: getPercentile(curStat.subscriptionOnAmount, subscriptionOnAmounts),
+        adOnAmount: getPercentile(curStat.adOnAmount, adOnAmounts)
+    })
+})
+
+
+app.listen(3000, () => updateStats())

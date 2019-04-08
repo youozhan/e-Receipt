@@ -21,7 +21,8 @@
 		"storage",
 		"webRequest",
 		"*://*.google.com/",
-		"*://socialblade.com/youtube/channel/*"
+		"*://socialblade.com/youtube/channel/*",
+		"*://localhost:3000/*"
 	],
 	"options_ui": {
 		"page": "options.html",

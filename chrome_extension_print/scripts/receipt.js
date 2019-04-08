@@ -1,3 +1,9 @@
+let localStat = {
+    settingsOnAmount: 0,
+    subscriptionOnAmount: 0,
+    adOnAmount: 0
+}
+
 $(document).ready(() => {
 
     var dt = new Date()
@@ -37,6 +43,8 @@ $(document).ready(() => {
             }, 500*i)
         })
 
+        localStat.subscriptionOnAmount = subscriptionData.length
+
     })
 
     chrome.storage.local.get(['settingStorageKey'], (result) => {
@@ -46,14 +54,20 @@ $(document).ready(() => {
         var items = []
 
         Object.keys(settingData).forEach((key) => {
+
+            // Construct the receipt HTML
             items.push(`<tr><td>${key}</td><td>${settingData[key]}</td></tr>`)
+
+            // Accumulate the localstat
+            if (settingData[key] === "On") {
+                localStat.settingsOnAmount += 1
+            }
         })
 
         $('table#settinglist').append(items.join(''))
 
         console.log("setting data get")
         console.log(JSON.parse(result['settingStorageKey']))
-
     })
 
     chrome.storage.local.get(['adsStorageKey'], (result) => {
@@ -68,7 +82,26 @@ $(document).ready(() => {
 
         $('table#adslist').append(items.join(''))
 
+        localStat.adOnAmount = adsData.length
+
         console.log("ads data get")
 
     })
+
+
+    // Send request to backend and get the percentile
+    setTimeout(() => {
+        $.ajax ({
+            type: "POST",
+            //the url where you want to sent the userName and password to
+            url: 'http://localhost:3000/perct',
+            contentType: 'application/json',
+            
+            data: JSON.stringify(localStat),
+            
+            success: (res) => {
+                console.log(res) 
+            }
+        })
+    }, 1000)
 })
