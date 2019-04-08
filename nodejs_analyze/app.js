@@ -1,29 +1,36 @@
 const glob = require('glob'),
     fs = require('fs')
 
-let settingsOnAmount = 0
-let subscriptionOnAmount = 0
-let adOnAmount = 0
+let settingsOnAmount = []
+let subscriptionOnAmount = []
+let adOnAmount = []
 
 glob(__dirname + '/data/*.json', {}, (err, files)=>{
     files.forEach(file => {
         
         let rawdata = fs.readFileSync(file)
         let profile = JSON.parse(rawdata)
+        let settingCount = 0
 
         Object.keys(profile.settingStorageKey).forEach(key => {
             if (profile.settingStorageKey[key] === "On") {
-                settingsOnAmount += 1
+                settingCount += 1
             }
         })
 
-        subscriptionOnAmount += profile.subscriptionStorageKey.length
-        adOnAmount += profile.adsStorageKey.length
+        settingsOnAmount.push(settingCount)
+
+        subscriptionOnAmount.push(profile.subscriptionStorageKey.length)
+        adOnAmount.push(profile.adsStorageKey.length)
 
     })
 
-    console.log(files.length)
-    console.log("setting total " + settingsOnAmount)
-    console.log("subscription total " + subscriptionOnAmount)
-    console.log("ad total " + adOnAmount)
+    console.log(toPercentile(settingsOnAmount))
+    console.log(toPercentile(subscriptionOnAmount))
+    console.log(toPercentile(adOnAmount))
+
 })
+
+function toPercentile(arr) {
+    return arr.map(amt => arr.filter(d => d<amt).length / arr.length)
+}
