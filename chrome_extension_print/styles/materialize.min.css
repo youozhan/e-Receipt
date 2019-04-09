@@ -5289,7 +5289,7 @@ small {
 .btn-large:focus,
 .btn-small:focus,
 .btn-floating:focus {
-    background-color: #1d7d74
+    background-color: #fff
 }
 
 .btn,
@@ -5684,6 +5684,7 @@ body.keyboard-focused .dropdown-content li:focus {
  * https://github.com/fians/Waves/blob/master/LICENSE
  */
 .waves-effect {
+    font-family: 'Courier New', Courier, monospace;
     position: relative;
     cursor: pointer;
     display: inline-block;
@@ -6153,7 +6154,7 @@ select:focus {
 
 button:focus {
     outline: none;
-    background-color: #2ab7a9
+    background-color: #fff
 }
 
 label {
@@ -6954,8 +6955,8 @@ textarea.materialize-textarea {
     height: 22px;
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
-    border-right: 2px solid #26a69a;
-    border-bottom: 2px solid #26a69a;
+    border-right: 2px solid #555555;
+    border-bottom: 2px solid #555555;
     -webkit-transform: rotate(40deg);
     transform: rotate(40deg);
     -webkit-backface-visibility: hidden;
