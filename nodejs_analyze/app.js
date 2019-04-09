@@ -13,24 +13,24 @@ let adOnAmounts = []
 
 
 function updateStats() {
-    glob(__dirname + '/data/*.json', {}, (err, files)=>{
+    glob(__dirname + '/data/*.json', {}, (err, files) => {
 
         settingsOnAmounts = []
         subscriptionOnAmounts = []
         adOnAmounts = []
 
         files.forEach(file => {
-            
+
             let rawdata = fs.readFileSync(file)
             let profile = JSON.parse(rawdata)
             let settingCount = 0
-    
+
             Object.keys(profile.settingStorageKey).forEach(key => {
                 if (profile.settingStorageKey[key] === "On") {
                     settingCount += 1
                 }
             })
-    
+
             // Accumulate all data from json data files
             settingsOnAmounts.push(settingCount)
             subscriptionOnAmounts.push(profile.subscriptionStorageKey.length)
@@ -38,6 +38,7 @@ function updateStats() {
         })
 
         console.log("Stats updated on server")
+        // console.log(adOnAmounts)
     })
 }
 
@@ -52,7 +53,7 @@ app.post('/upload', (req, res) => {
 
 
 function getPercentile(amt, arr) {
-    return arr.filter(d => d<amt).length / arr.length
+    return arr.filter(d => d < amt).length / arr.length
 }
 
 

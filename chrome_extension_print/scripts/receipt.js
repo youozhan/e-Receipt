@@ -100,7 +100,10 @@ $(document).ready(() => {
             data: JSON.stringify(localStat),
             
             success: (res) => {
-                console.log(res) 
+                console.log(res)
+                $('#subscriptionpercentile').text(JSON.parse(res.subscriptionOnAmount)*100 + "%")
+                $('#settingpercentile').text(JSON.parse(res.settingsOnAmount)*100 + "%")
+                $('#adspercentile').text(JSON.parse(res.adOnAmount)*100 + "%")
             }
         })
     }, 1000)

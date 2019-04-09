@@ -31,7 +31,7 @@ $(document).ready(function () {
         return false
     })
 
-    $(this).on('click', 'a#reset', function () {
+    $(this).on('click', 'button#reset', function () {
         chrome.storage.local.clear()
         return false
     });
