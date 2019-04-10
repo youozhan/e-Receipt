@@ -101,9 +101,9 @@ $(document).ready(() => {
             
             success: (res) => {
                 console.log(res)
-                $('#subscriptionpercentile').text(JSON.parse(res.subscriptionOnAmount)*100 + "%")
-                $('#settingpercentile').text(JSON.parse(res.settingsOnAmount)*100 + "%")
-                $('#adspercentile').text(JSON.parse(res.adOnAmount)*100 + "%")
+                $('#subscriptionpercentile').text(JSON.parse(res.subscriptionOnAmount).toFixed(2)*100 + "%")
+                $('#settingpercentile').text(JSON.parse(res.settingsOnAmount).toFixed(2)*100 + "%")
+                $('#adspercentile').text(JSON.parse(res.adOnAmount).toFixed(2)*100 + "%")
             }
         })
     }, 1000)
