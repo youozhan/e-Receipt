@@ -20,7 +20,8 @@ function updateStats() {
         adOnAmounts = []
 
         files.forEach(file => {
-
+            
+            // Generage analytics for client
             let rawdata = fs.readFileSync(file)
             let profile = JSON.parse(rawdata)
             let settingCount = 0
@@ -35,6 +36,10 @@ function updateStats() {
             settingsOnAmounts.push(settingCount)
             subscriptionOnAmounts.push(profile.subscriptionStorageKey.length)
             adOnAmounts.push(profile.adsStorageKey.length)
+
+            // Rank the profile
+            
+
         })
 
         console.log("Stats updated on server")

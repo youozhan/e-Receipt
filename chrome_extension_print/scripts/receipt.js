@@ -38,7 +38,7 @@ $(document).ready(() => {
                     const videoGrade = data.find('#afd-header-total-grade').text()
                     const monthlyEarn = data.find('p[style*="font-size: 1.4em; color:#41a200; font-weight: 600; padding-top: 20px;"]')[0].innerHTML
 
-                    $('table#subscriptionlist').append(`<tr><td>${item.name}</td><td>${monthlyEarn}</td></tr>`)
+                    $('table#subscriptionlist').append(`<tr><td width="58%">${item.name}</td><td>${monthlyEarn}</td></tr>`)
                 })
             }, 500*i)
         })
