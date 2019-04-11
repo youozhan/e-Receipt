@@ -11,6 +11,12 @@ let settingsOnAmounts = []
 let subscriptionOnAmounts = []
 let adOnAmounts = []
 
+//Percentile
+let settingsOnPercentiles = []
+let suscriptionPercentiles = []
+let adOnPercentiles = []
+
+let analyzeResult = []
 
 function updateStats() {
     glob(__dirname + '/data/*.json', {}, (err, files) => {
@@ -19,8 +25,12 @@ function updateStats() {
         subscriptionOnAmounts = []
         adOnAmounts = []
 
+        settingsOnPercentiles = []
+        subscriptionPercentiles = []
+        adOnPercentiles = []
+
         files.forEach(file => {
-            
+
             // Generage analytics for client
             let rawdata = fs.readFileSync(file)
             let profile = JSON.parse(rawdata)
@@ -38,12 +48,16 @@ function updateStats() {
             adOnAmounts.push(profile.adsStorageKey.length)
 
             // Rank the profile
-            
+            settingsOnPercentiles = settingsOnAmounts.map(d => getPercentile(d, settingsOnAmounts))
 
         })
 
+        for (var i = 0; i < analyzeResult.length; i++) {
+            analyzeResult[i] = settingsOnPercentiles[i]
+        }
+
         console.log("Stats updated on server")
-        // console.log(adOnAmounts)
+        console.log(analyzeResult)
     })
 }
 
@@ -52,7 +66,6 @@ function updateStats() {
 app.post('/upload', (req, res) => {
 
     updateStats()
-
     console.log(req.files.datafile) // the uploaded file object
 })
 
