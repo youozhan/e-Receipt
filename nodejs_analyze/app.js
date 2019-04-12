@@ -1,6 +1,7 @@
 const glob = require('glob'),
     fs = require('fs'),
-    express = require('express')
+    express = require('express'),
+    jsonfile = require('jsonfile')
 
 app = express()
 
@@ -17,6 +18,7 @@ let suscriptionPercentiles = []
 let adOnPercentiles = []
 
 let analyzeResult = []
+let profileCount = 0
 
 function updateStats() {
     glob(__dirname + '/data/*.json', {}, (err, files) => {
@@ -25,9 +27,9 @@ function updateStats() {
         subscriptionOnAmounts = []
         adOnAmounts = []
 
-        settingsOnPercentiles = []
+        settingsPercentiles = []
         subscriptionPercentiles = []
-        adOnPercentiles = []
+        adPercentiles = []
 
         files.forEach(file => {
 
@@ -48,17 +50,25 @@ function updateStats() {
             adOnAmounts.push(profile.adsStorageKey.length)
 
             // Rank the profile
-            settingsOnPercentiles = settingsOnAmounts.map(d => getPercentile(d, settingsOnAmounts))
+            settingsPercentiles = settingsOnAmounts.map(d => getPercentile(d, settingsOnAmounts))
+            subscriptionPercentiles = subscriptionOnAmounts.map(d => getPercentile(d, subscriptionOnAmounts))
+            adPercentiles = adOnAmounts.map(d => getPercentile(d, adOnAmounts))
+
+            profileCount = settingsOnAmounts.length
 
         })
 
-        for (var i = 0; i < analyzeResult.length; i++) {
-            analyzeResult[i] = settingsOnPercentiles[i]
+        for (var i = 0; i<settingsPercentiles.length; i++) {
+            analyzeResult[i] = (settingsPercentiles[i] + subscriptionPercentiles[i] + adPercentiles[i]) * 400
         }
 
         console.log("Stats updated on server")
         console.log(analyzeResult)
     })
+
+    // for (var i = 0; i<profileCount; i++){
+
+    // }
 }
 
 
