@@ -84,7 +84,7 @@ $(document).ready(() => {
 
         localStat.adOnAmount = adsData.length
 
-        console.log("ads data get")
+        console.log("ads data get " + localStat.adOnAmount)
 
     })
 

@@ -2,7 +2,7 @@ const glob = require('glob'),
     fs = require('fs'),
     express = require('express')
 
-    app = express()
+app = express()
 
 app.use(express.json());
 
@@ -59,26 +59,34 @@ function updateStats() {
 
             profileCount = settingsOnAmounts.length
 
+
         })
-        
+
         // Convert result to position data
         for (var i = 0; i < settingsPercentiles.length; i++) {
-            analyzeResult[i] = (settingsPercentiles[i] + subscriptionPercentiles[i] + adPercentiles[i]) * 400
+            analyzeResult[i] = 800 - (settingsPercentiles[i] + subscriptionPercentiles[i] + adPercentiles[i]) * 400
 
-            var xpos = analyzeResult[i] * Math.cos(Math.PI * 2 / profileCount)
-            var ypos = analyzeResult[i] * Math.sin(Math.PI * 2 / profileCount)
+            var xpos = analyzeResult[i] * Math.cos(Math.PI * 2 * i / profileCount)
+            var ypos = analyzeResult[i] * Math.sin(Math.PI * 2 * i / profileCount)
+            var orbit = Math.cos(Math.PI * i) * 0.003
+            var moon = Math.round(Math.random() * 6)
 
             obj.planets.push({
                 position: {
                     x: xpos.toFixed(0),
                     y: ypos.toFixed(0)
                 },
-                diameter: 32
+                diameter: 32,
+                orbitspeed: orbit,
+                mooncount: moon,
+                moondistance: 36,
+                moondiameter: 12,
+                label: "anonymous"
             })
         }
 
         console.log("Stats updated on server")
-        console.log(analyzeResult)
+        // console.log(analyzeResult)
 
     })
 
