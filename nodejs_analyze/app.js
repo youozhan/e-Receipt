@@ -1,9 +1,8 @@
 const glob = require('glob'),
     fs = require('fs'),
-    express = require('express'),
-    jsonfile = require('jsonfile')
+    express = require('express')
 
-app = express()
+    app = express()
 
 app.use(express.json());
 
@@ -19,6 +18,10 @@ let adOnPercentiles = []
 
 let analyzeResult = []
 let profileCount = 0
+
+let obj = {
+    planets: []
+}
 
 function updateStats() {
     glob(__dirname + '/data/*.json', {}, (err, files) => {
@@ -57,24 +60,40 @@ function updateStats() {
             profileCount = settingsOnAmounts.length
 
         })
-
-        for (var i = 0; i<settingsPercentiles.length; i++) {
+        
+        // Convert result to position data
+        for (var i = 0; i < settingsPercentiles.length; i++) {
             analyzeResult[i] = (settingsPercentiles[i] + subscriptionPercentiles[i] + adPercentiles[i]) * 400
+
+            var xpos = analyzeResult[i] * Math.cos(Math.PI * 2 / profileCount)
+            var ypos = analyzeResult[i] * Math.sin(Math.PI * 2 / profileCount)
+
+            obj.planets.push({
+                position: {
+                    x: xpos.toFixed(0),
+                    y: ypos.toFixed(0)
+                },
+                diameter: 32
+            })
         }
 
         console.log("Stats updated on server")
         console.log(analyzeResult)
+
     })
 
-    // for (var i = 0; i<profileCount; i++){
+    setTimeout(function () {
+        fs.writeFile("position.json", JSON.stringify(obj), function (err) {
+            if (err) throw err;
+            console.log("Saving data");
+        })
+    }, 2000)
 
-    // }
 }
 
 
 // Handler for uploading files using express-upload
 app.post('/upload', (req, res) => {
-
     updateStats()
     console.log(req.files.datafile) // the uploaded file object
 })
