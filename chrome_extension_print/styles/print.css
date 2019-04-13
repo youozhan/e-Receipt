@@ -1,0 +1,28 @@
+body {
+    font-size: 14px;
+    /* font-family: Courier, monospace; */
+    width: 200pt;
+}
+
+.invoice-box {
+    position: absolute;
+    width: 194pt;
+}
+
+.invoice-box table {
+    width: 194pt;
+}
+
+th {
+    text-align: left;
+    padding: 20px 0 0 0;
+}
+
+td {
+    padding-right: 10px;
+}
+
+#logo {
+    width: 190pt;
+    vertical-align: top;
+}
