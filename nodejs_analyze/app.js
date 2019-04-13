@@ -1,6 +1,7 @@
 const glob = require('glob'),
     fs = require('fs'),
     express = require('express')
+    path = require('path')
 
 app = express()
 
@@ -19,6 +20,7 @@ let adOnPercentiles = []
 let analyzeResult = []
 let profileCount = 0
 
+const folderpath = '/Users/yz/Documents/Processing/sketch_190328a/'
 let obj = {
     planets: []
 }
@@ -91,9 +93,9 @@ function updateStats() {
     })
 
     setTimeout(function () {
-        fs.writeFile("position.json", JSON.stringify(obj), function (err) {
-            if (err) throw err;
-            console.log("Saving data");
+        fs.writeFile(folderpath + "data.json", JSON.stringify(obj), function (err) {
+            if (err) throw err
+            console.log("Saving data")
         })
     }, 2000)
 
