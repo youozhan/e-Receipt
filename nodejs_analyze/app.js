@@ -1,7 +1,7 @@
 const glob = require('glob'),
     fs = require('fs'),
-    express = require('express')
-    path = require('path')
+    express = require('express'),
+    // path = require('path')
 
 app = express()
 
@@ -70,8 +70,9 @@ function updateStats() {
 
             var xpos = analyzeResult[i] * Math.cos(Math.PI * 2 * i / profileCount)
             var ypos = analyzeResult[i] * Math.sin(Math.PI * 2 * i / profileCount)
-            var orbit = Math.cos(Math.PI * i) * 0.003
-            var moon = Math.round(Math.random() * 6)
+            var orbit = Math.cos(Math.PI * i) * 0.002
+            var moon = Math.round(subscriptionPercentiles[i] * 6)
+            var profileLabel = "anonymous" + String(i)
 
             obj.planets.push({
                 position: {
@@ -83,12 +84,14 @@ function updateStats() {
                 mooncount: moon,
                 moondistance: 36,
                 moondiameter: 12,
-                label: "anonymous"
+                label: profileLabel
             })
         }
 
         console.log("Stats updated on server")
-        // console.log(analyzeResult)
+        console.log(settingsOnAmounts)
+        console.log(subscriptionOnAmounts)
+        console.log(adOnAmounts)
 
     })
 
