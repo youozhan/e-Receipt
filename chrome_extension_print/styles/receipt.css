@@ -32,3 +32,15 @@ th {
     max-width: 300px;
     vertical-align: top;
 }
+
+#tableheader1 {
+    width: 46%;
+}
+
+#tableheader2 {
+    width: 54%;
+}
+
+.percentile {
+    align-content: center;
+}

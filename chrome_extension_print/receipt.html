@@ -14,36 +14,36 @@
 <body>
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
-            <tr class="top">
+            <tr>
                 <td colspan="2">
                     <img src="images/logo.png" id="logo">
                 </td>
             </tr>
 
-            <tr class="heading">
-                <th width="46%">SERVICE</th>
-                <th width="54%">PRICE</th>
+            <tr>
+                <th id="tableheader1">SERVICE</th>
+                <th id="tableheader2">PRICE</th>
             </tr>
             <tr>
                 <td colspan="2">=========================================</td>
             </tr>
-            <tr class="details">
+            <tr>
                 <td>YouTube</td>
                 <td>Free</td>
             </tr>
-            <tr class="details" id="purchaselist">
+            <tr id="purchaselist">
                 <td id="pname"></td>
                 <td id="pprice"></td>
             </tr>
 
-            <tr class="heading">
+            <tr>
                 <th>SUBSCRIPTION</th>
                 <th>CHANNEL MONTHLY INCOME</th>
             </tr>
             <tr>
                 <td colspan="2">=========================================</td>
             </tr>
-            <tr class="details">
+            <tr>
                 <td colspan="2">
                     <table id="subscriptionlist" cellpadding="0" cellspacing="0"></table>
                 </td>
@@ -51,19 +51,19 @@
             <tr>
                 <td colspan="2">-----------------------------------------</td>
             </tr>
-            <tr class="details">
+            <tr>
                 <td>Number of subscriptions is higher than </td>
-                <td align="center" id="subscriptionpercentile"></td>
+                <td class="percentile" id="subscriptionpercentile"></td>
             </tr>
 
-            <tr class="heading">
+            <tr>
                 <th>PRIVACY USAGE</th>
                 <th></th>
             </tr>
             <tr>
                 <td colspan="2">=========================================</td>
             </tr>
-            <tr class="details">
+            <tr>
                 <td colspan="2">
                     <table id="settinglist" cellpadding="0" cellspacing="0"></table>
                 </td>
@@ -71,19 +71,19 @@
             <tr>
                 <td colspan="2">-----------------------------------------</td>
             </tr>
-            <tr class="details">
+            <tr>
                 <td>Enabled privacy setting is higher than </td>
-                <td align="center" id="settingpercentile"></td>
+                <td class="percentile" id="settingpercentile"></td>
             </tr>
 
-            <tr class="heading">
+            <tr>
                 <th>AD PERSONALIZATION</th>
                 <th></th>
             </tr>
             <tr>
                 <td colspan="2">=========================================</td>
             </tr>
-            <tr class="details">
+            <tr>
                 <td colspan="2">
                     <table id="adslist" cellpadding="0" cellspacing="0"></table>
                 </td>
@@ -91,9 +91,9 @@
             <tr>
                 <td colspan="2">-----------------------------------------</td>
             </tr>
-            <tr class="details">
+            <tr>
                 <td>Number of Ad labels is higher than </td>
-                <td align="center" id="adspercentile"></td>
+                <td class="percentile" id="adspercentile"></td>
             </tr>
 
         </table>

@@ -5,8 +5,8 @@ body {
 }
 
 .invoice-box {
-    position: absolute;
     width: 194pt;
+    overflow: hidden;
 }
 
 .invoice-box table {
@@ -25,4 +25,16 @@ td {
 #logo {
     width: 190pt;
     vertical-align: top;
+}
+
+#tableheader1 {
+    width: 26pt;
+}
+
+#tableheader2 {
+    width: 60pt;
+}
+
+.percentile {
+    align-content: left;
 }
