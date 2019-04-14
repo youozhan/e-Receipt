@@ -22,7 +22,8 @@
 		"webRequest",
 		"*://*.google.com/",
 		"*://socialblade.com/youtube/channel/*",
-		"*://localhost:3000/*"
+		"*://localhost:3000/*",
+		"*://54.65.179.104:9000/*"
 	],
 	"options_ui": {
 		"page": "options.html",

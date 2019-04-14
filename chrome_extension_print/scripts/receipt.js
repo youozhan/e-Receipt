@@ -94,7 +94,7 @@ $(document).ready(() => {
         $.ajax ({
             type: "POST",
             //the url where you want to sent the userName and password to
-            url: 'http://localhost:3000/perct',
+            url: 'http://54.65.179.104:9000/perct',
             contentType: 'application/json',
             
             data: JSON.stringify(localStat),
