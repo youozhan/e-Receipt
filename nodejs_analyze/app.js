@@ -1,11 +1,46 @@
 const glob = require('glob'),
     fs = require('fs'),
     express = require('express'),
+    multer = require('multer'),
+    bodyParser = require('body-parser')
     // path = require('path')
 
 app = express()
 
 app.use(express.json());
+app.use(bodyParser.urlencoded({extended:false}));
+app.use('/', express.static(__dirname + '/public'));
+
+//MULTER CONFIG: to get file photos to temp server storage
+const multerConfig = {
+    //specify diskStorage (another option is memory)
+    storage: multer.diskStorage({
+
+        //specify destination
+        destination: function(req, file, next){
+            next(null, './data');
+        },
+
+        //specify the filename to be unique
+        filename: function(req, file, next){
+            console.log(file);
+            //get the file mimetype ie 'image/jpeg' split and prefer the second value ie'jpeg'
+            const ext = file.mimetype.split('/')[1];
+            //set the file fieldname to a unique name containing the original name, current datetime and the extension.
+            next(null, file.fieldname + '-' + Date.now() + '.'+ext);
+        }
+    })
+}
+
+app.get('/', (req, res) => {
+    res.render('index.html')
+})
+
+app.post('/upload', multer(multerConfig).single('youtubeStats'), (req, res) => {
+    res.send('Complete! Check out your data folder.  Please note that files not encoded with an image mimetype are rejected. <a href="index.html">try again</a>');
+})
+
+
 
 //Global variables as counters
 let settingsOnAmounts = []
@@ -128,4 +163,4 @@ app.post('/perct', (req, res) => {
 })
 
 
-app.listen(9000, () => updateStats())
+app.listen(3000, () => updateStats())
