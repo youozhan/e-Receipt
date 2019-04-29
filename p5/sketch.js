@@ -1,24 +1,20 @@
 let theta = 0;
-let bgcolor = color(53, 53, 53);
 let planets = [];
-// planet[] planets;
-// JSONObject json;
 let data = {};
 let font;
 
-function preload(){
+function preload() {
     data = loadJSON('assets/data.json');
     font = loadFont('assets/Lato-Regular.ttf');
 }
 
 function setup() {
-    c = createCanvas(windowWidth, windowHeight);
-
-    // textFont(font);
-    // loadData();
+    createCanvas(windowWidth, windowHeight);
+    loadData();
 }
 
 function draw() {
+    let bgcolor = color(53, 53, 53);
     background(bgcolor);
     noStroke();
 
@@ -33,21 +29,19 @@ function draw() {
 
     textFont(font, 14);
     //fill(255);
-    text("Ad Revenue", -42, -12);
-    textFont(f, 18);
-    text("$20.4 billion (2018)", -104, 12);
+    text('Ad Revenue', -42, -12);
+    textFont(font, 18);
+    text('$20.4 billion (2018)', -104, 12);
     circularSystem();
 
-    for (Planet p: planets) {
-        p.update();
-        p.display();
+    for (let i = 0; i < planets.length; i++) {
+        planets[i].update();
+        planets[i].display();
     }
 }
 
 function loadData() {
     let planetData = data['planets'];
-    // JSONArray planetData = json.getJSONArray("planets");
-    // planets = new Planet[planetData.createCanvas()];
 
     for (let i = 0; i < planetData.length; i++) {
         // Get each object in the array
@@ -57,7 +51,7 @@ function loadData() {
         // Get x,y from position
         let x = planet['x'];
         let y = planet['y'];
-    
+
         // Get diameter and label
         let diameter = planet['diameter'];
         let orbitspeed = planet['orbitspeed'];
@@ -73,30 +67,8 @@ function loadData() {
         }
 
         // Put object in array
-        bubbles.push(new Bubble(x, y, diameter, label));
-      }
-
-    for (var i = 0; i < planetData.createCanvas(); i++) {
-        // JSONObject planet = planetData.getJSONObject(i);
-        // JSONObject position = planet.getJSONObject("position");
-        // var x = position.getFloat("x");
-        // var y = position.getFloat("y");
-
-        // var diameter = planet.getFloat("diameter");
-        // var orbitspeed = planet.getFloat("orbitspeed");
-        // var mooncount = planet.getInt("mooncount");
-
-        // var moondistance = new Array(mooncount);
-        // var moondiameter = new Array(mooncount);
-
-        // for (var j = 0; j < mooncount; j++) {
-        //     moondistance[j] = 24 + 3 * j;
-        //     moondiameter[j] = 6;
-        // }
-
-        // var label = planet.getvar("label");
-
-        planets[i] = new Planet(x, y, diameter, 0, orbitspeed, mooncount, moondistance, moondiameter, label);
+        // bubbles.push(new Bubbles(x, y, diameter, label));
+        planets.push(new Planet(x, y, diameter, 0, orbitspeed, mooncount, moondistance, moondiameter, label));
     }
 }
 
@@ -116,7 +88,7 @@ function fibonacci(rad) {
 }
 
 class Moon {
-    constructor(theta, orbitspeed, distance, diameter){
+    constructor(theta, orbitspeed, distance, diameter) {
         this.theta = theta;
         this.orbitspeed = orbitspeed;
         this.distance = distance;
@@ -124,59 +96,60 @@ class Moon {
         this.moonColor = color(232, 169, 63);
     }
 
-    update(){
-    }
+    update() {}
 
-    display(index){
+    display(index) {
         push();
-        rotate(theta);
-        translate(distance * cos(PI / 3 * index), distance * sin(PI / 3 * index));
-        fill(moonColor);
-        ellipse(0, 0, diameter, diameter);
+        rotate(this.theta);
+        translate(this.distance * cos(PI / 3 * index), this.distance * sin(PI / 3 * index));
+        fill(this.moonColor);
+        ellipse(0, 0, this.diameter, this.diameter);
         pop();
     }
 }
 
 class Planet {
-    constructor(){
+    constructor(positionx, positiony, diameter, theta, orbitspeed, mooncount, moondistance, moondiameter, label ) {
         this.positionx = positionx;
         this.positiony = positiony;
         this.diameter = diameter;
         this.theta = theta;
         this.orbitspeed = orbitspeed;
         this.planetColor = color(232, 169, 63);
-        this.mooncount = mooncount; 
+        this.mooncount = mooncount;
         this.moons = [];
+        this.moondistance = [];
+        this.moondiameter = [];
+
         this.label = label;
 
-        for (var i = 0; i < mooncount_; i++) {
-            moons[i] = new Moon(-theta_ * 4, orbitspeed_, mdistance[i], mdiameter[i]);
+        for (var i = 0; i < mooncount; i++) {
+            this.moons.push(new Moon(-this.theta_ * 4, this.orbitspeed_, this.moondistance[i], this.moondiameter[i]));
         }
     }
 
-    update(){
-        theta += orbitspeed;
+    update() {
+        this.theta += this.orbitspeed;
 
-        for (Moon m: moons) {
-            //m.update();
-            m.theta = -theta * 4;
+        for (let i = 0; i < this.moons.length; i++) {
+            this.moons[i].theta = -this.theta * 4;
         }
     }
 
-   display() {
+    display() {
         push();
-        rotate(theta);
-        translate(positionx, positiony);
+        rotate(this.theta);
+        translate(this.positionx, this.positiony);
 
         // diameter 32
-        fill(planetColor);
-        ellipse(0, 0, diameter, diameter);
-        textFont(f, 10);
+        fill(this.planetColor);
+        ellipse(0, 0, this.diameter, this.diameter);
+        textFont(font, 10);
         fill(255);
-        text(label, 0, 0);
+        text(this.label, 0, 0);
 
-        for (var i = 0; i < moons.length; i++) {
-            moons[i].display(i);
+        for (let i = 0; i < this.moons.length; i++) {
+            this.moons[i].display(i);
         }
 
         pop();
