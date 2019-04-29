@@ -52,7 +52,7 @@ function loadData() {
         let x = position['x'];
         let y = position['y'];
 
-        console.log(x,y);
+        console.log(x, y);
 
         // Get diameter and label
         let diameter = planet['diameter'];
@@ -89,6 +89,10 @@ function fibonacci(rad) {
     ellipse(0, 0, rad, rad);
 }
 
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
 class Moon {
     constructor(theta, orbitspeed, distance, diameter) {
         this.theta = theta;
@@ -111,7 +115,7 @@ class Moon {
 }
 
 class Planet {
-    constructor(positionx, positiony, diameter, theta, orbitspeed, mooncount, moondistance, moondiameter, label ) {
+    constructor(positionx, positiony, diameter, theta, orbitspeed, mooncount, moondistance, moondiameter, label) {
         this.positionx = positionx;
         this.positiony = positiony;
         this.diameter = diameter;
