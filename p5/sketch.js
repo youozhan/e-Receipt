@@ -49,8 +49,10 @@ function loadData() {
         // Get a position object
         let position = planet['position'];
         // Get x,y from position
-        let x = planet['x'];
-        let y = planet['y'];
+        let x = position['x'];
+        let y = position['y'];
+
+        console.log(x,y);
 
         // Get diameter and label
         let diameter = planet['diameter'];
@@ -123,7 +125,7 @@ class Planet {
 
         this.label = label;
 
-        for (var i = 0; i < mooncount; i++) {
+        for (var i = 0; i < this.mooncount; i++) {
             this.moons.push(new Moon(-this.theta_ * 4, this.orbitspeed_, this.moondistance[i], this.moondiameter[i]));
         }
     }
