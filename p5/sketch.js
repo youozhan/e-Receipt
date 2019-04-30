@@ -20,18 +20,18 @@ function draw() {
 
     textFont(font, 22);
     fill(255);
-    text("Hidden Space", 70, height - 80);
+    text("Hidden Space", 40, height - 80);
     textFont(font, 16);
-    text("Simulating The Solar System of Watching Videos", 70, height - 60);
+    text("Simulating The Solar System of Watching Videos", 40, height - 60);
 
     // Translate to center of window to draw the sun.
     translate(width / 2, height / 2);
 
     textFont(font, 14);
     //fill(255);
-    text('Ad Revenue', -42, -12);
+    text('Ad Revenue', -38, -16);
     textFont(font, 18);
-    text('$20.4 billion (2018)', -104, 12);
+    text('$20.4 billion (2018)', -76, 16);
     circularSystem();
 
     for (let i = 0; i < planets.length; i++) {
@@ -124,13 +124,13 @@ class Planet {
         this.planetColor = color(232, 169, 63);
         this.mooncount = mooncount;
         this.moons = [];
-        this.moondistance = [];
-        this.moondiameter = [];
+        // this.moondistance = [];
+        // this.moondiameter = [];
 
         this.label = label;
 
         for (var i = 0; i < this.mooncount; i++) {
-            this.moons.push(new Moon(-this.theta_ * 4, this.orbitspeed_, this.moondistance[i], this.moondiameter[i]));
+            this.moons.push(new Moon(-this.theta_ * 4, this.orbitspeed_, moondistance[i], moondiameter[i]));
         }
     }
 

@@ -1,1 +1,76 @@
-{"planets":[{"position":{"x":"133","y":"0"},"diameter":32,"orbitspeed":0.002,"mooncount":3,"moondistance":36,"moondiameter":12,"label":"anonymous0"},{"position":{"x":"67","y":"115"},"diameter":32,"orbitspeed":-0.002,"mooncount":5,"moondistance":36,"moondiameter":12,"label":"anonymous1"},{"position":{"x":"-233","y":"404"},"diameter":32,"orbitspeed":0.002,"mooncount":1,"moondistance":36,"moondiameter":12,"label":"anonymous2"},{"position":{"x":"-600","y":"0"},"diameter":32,"orbitspeed":-0.002,"mooncount":1,"moondistance":36,"moondiameter":12,"label":"anonymous3"},{"position":{"x":"-267","y":"-462"},"diameter":32,"orbitspeed":0.002,"mooncount":4,"moondistance":36,"moondiameter":12,"label":"anonymous4"},{"position":{"x":"200","y":"-346"},"diameter":32,"orbitspeed":-0.002,"mooncount":0,"moondistance":36,"moondiameter":12,"label":"anonymous5"}]}
+{
+    "planets": [
+        {
+            "position": {
+                "x": "133",
+                "y": "0"
+            },
+            "diameter": 32,
+            "orbitspeed": 0.002,
+            "mooncount": 3,
+            "moondistance": 36,
+            "moondiameter": 12,
+            "label": "yz0411"
+        },
+        {
+            "position": {
+                "x": "67",
+                "y": "115"
+            },
+            "diameter": 32,
+            "orbitspeed": -0.002,
+            "mooncount": 5,
+            "moondistance": 36,
+            "moondiameter": 12,
+            "label": "sf0411"
+        },
+        {
+            "position": {
+                "x": "-233",
+                "y": "404"
+            },
+            "diameter": 32,
+            "orbitspeed": 0.002,
+            "mooncount": 1,
+            "moondistance": 36,
+            "moondiameter": 12,
+            "label": "rl0411"
+        },
+        {
+            "position": {
+                "x": "-600",
+                "y": "0"
+            },
+            "diameter": 32,
+            "orbitspeed": -0.002,
+            "mooncount": 1,
+            "moondistance": 36,
+            "moondiameter": 12,
+            "label": "hy0411"
+        },
+        {
+            "position": {
+                "x": "-267",
+                "y": "-462"
+            },
+            "diameter": 32,
+            "orbitspeed": 0.002,
+            "mooncount": 4,
+            "moondistance": 36,
+            "moondiameter": 12,
+            "label": "lh0411"
+        },
+        {
+            "position": {
+                "x": "200",
+                "y": "-346"
+            },
+            "diameter": 32,
+            "orbitspeed": -0.002,
+            "mooncount": 0,
+            "moondistance": 36,
+            "moondiameter": 12,
+            "label": "yj0412"
+        }
+    ]
+}
