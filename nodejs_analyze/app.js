@@ -55,7 +55,8 @@ let adOnPercentiles = []
 let analyzeResult = []
 let profileCount = 0
 
-const folderpath = '/Users/yz/Documents/Processing/sketch_190328a/'
+// const folderpath = '/Users/yz/Documents/Processing/sketch_190328a/'
+const folderpath = '/Users/yz/Documents/GitHub/chrome-extension-youtube-analytics/p5/assets/'
 let obj = {
     planets: []
 }
@@ -105,7 +106,7 @@ function updateStats() {
 
             var xpos = analyzeResult[i] * Math.cos(Math.PI * 2 * i / profileCount)
             var ypos = analyzeResult[i] * Math.sin(Math.PI * 2 * i / profileCount)
-            var orbit = Math.cos(Math.PI * i) * 0.002
+            var orbit = Math.cos(Math.PI * i) * 0.008 * (1 - analyzeResult[i]/800) * (1 - analyzeResult[i]/800)
             var moon = Math.round(subscriptionPercentiles[i] * 6)
             var profileLabel = "anonymous" + String(i)
 
@@ -124,9 +125,10 @@ function updateStats() {
         }
 
         console.log("Stats updated on server")
-        console.log(settingsOnAmounts)
-        console.log(subscriptionOnAmounts)
-        console.log(adOnAmounts)
+        // console.log(settingsOnAmounts)
+        // console.log(subscriptionOnAmounts)
+        // console.log(adOnAmounts)
+        console.log(analyzeResult)
 
     })
 

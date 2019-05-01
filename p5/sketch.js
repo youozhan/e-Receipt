@@ -28,7 +28,6 @@ function draw() {
     translate(width / 2, height / 2);
 
     textFont(font, 14);
-    //fill(255);
     text('Ad Revenue', -38, -16);
     textFont(font, 18);
     text('$20.4 billion (2018)', -76, 16);
@@ -57,6 +56,7 @@ function loadData() {
         // Get diameter and label
         let diameter = planet['diameter'];
         let orbitspeed = planet['orbitspeed'];
+        let alpha = planet['alpha'];
         let mooncount = planet['mooncount'];
         let label = planet['label'];
 
@@ -64,13 +64,13 @@ function loadData() {
         let moondiameter = [];
 
         for (var j = 0; j < mooncount; j++) {
-            moondistance[j] = 24 + 3 * j;
+            moondistance[j] = 36 + 6 * j;
+            // moondistance[j] = 36;
             moondiameter[j] = 6;
         }
 
         // Put object in array
-        // bubbles.push(new Bubbles(x, y, diameter, label));
-        planets.push(new Planet(x, y, diameter, 0, orbitspeed, mooncount, moondistance, moondiameter, label));
+        planets.push(new Planet(x, y, diameter, 0, orbitspeed, alpha, mooncount, moondistance, moondiameter, label));
     }
 }
 
@@ -83,6 +83,7 @@ function circularSystem() {
     fibonacci(377);
     fibonacci(610);
     fibonacci(987);
+    line(0, 0, 1000, -400)
 }
 
 function fibonacci(rad) {
@@ -115,13 +116,14 @@ class Moon {
 }
 
 class Planet {
-    constructor(positionx, positiony, diameter, theta, orbitspeed, mooncount, moondistance, moondiameter, label) {
+    constructor(positionx, positiony, diameter, theta, orbitspeed, alpha, mooncount, moondistance, moondiameter, label) {
         this.positionx = positionx;
         this.positiony = positiony;
         this.diameter = diameter;
         this.theta = theta;
         this.orbitspeed = orbitspeed;
-        this.planetColor = color(232, 169, 63);
+        this.alpha = alpha;
+        this.planetColor = color(232, 169, 63, this.alpha);
         this.mooncount = mooncount;
         this.moons = [];
         // this.moondistance = [];
@@ -130,7 +132,8 @@ class Planet {
         this.label = label;
 
         for (var i = 0; i < this.mooncount; i++) {
-            this.moons.push(new Moon(-this.theta_ * 4, this.orbitspeed_, moondistance[i], moondiameter[i]));
+            // this.moons.push(new Moon(-this.theta * 4, this.orbitspeed, moondistance[i], moondiameter[i]));
+            this.moons.push(new Moon(-this.theta * 2, 0, moondistance[i], moondiameter[i]));
         }
     }
 
@@ -138,7 +141,7 @@ class Planet {
         this.theta += this.orbitspeed;
 
         for (let i = 0; i < this.moons.length; i++) {
-            this.moons[i].theta = -this.theta * 4;
+            this.moons[i].theta = -this.theta * 2;
         }
     }
 
@@ -151,13 +154,26 @@ class Planet {
         fill(this.planetColor);
         ellipse(0, 0, this.diameter, this.diameter);
         textFont(font, 10);
-        fill(255);
-        text(this.label, 0, 0);
 
+        // stroke(255, 40);
+        // noFill();
+        // ellipse(0, 0, this.diameter + 39, this.diameter + 39)
+
+        rotate(-this.theta);
         for (let i = 0; i < this.moons.length; i++) {
+            stroke(255, 40);
+            noFill();
+            ellipse(0, 0, this.diameter + 36 + 12 * i + 6, this.diameter + 36 + 12 * i + 6);
             this.moons[i].display(i);
         }
+        fill(255);
+        text(this.label, 46, -36);
+        stroke(255, 40);
+        line(0, 0, 40, -32);
+        line(40, -32, 80, -32);
 
         pop();
+
+
     }
 }
