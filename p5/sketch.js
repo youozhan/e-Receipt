@@ -22,15 +22,19 @@ function draw() {
     fill(255);
     text("Hidden Space", 40, height - 80);
     textFont(font, 16);
-    text("Simulating The Solar System of Watching Videos", 40, height - 60);
+    text("Simulating the YouTube Video Consumption System", 40, height - 60);
 
     // Translate to center of window to draw the sun.
     translate(width / 2, height / 2);
 
-    textFont(font, 14);
-    text('Ad Revenue', -38, -16);
-    textFont(font, 18);
-    text('$20.4 billion (2018)', -76, 16);
+    // textFont(font, 14);
+    // text('Ad Revenue', -38, -16);
+    // textFont(font, 18);
+    // text('$20.4 billion (2018)', -76, 16);
+    fill(200)
+    textFont(font, 24);
+    text('$', -7, 7);
+    // text('$20.4 billion (2018)', -76, 16);
     circularSystem();
 
     for (let i = 0; i < planets.length; i++) {

@@ -103,7 +103,7 @@ function updateStats() {
         // Convert result to position data
         for (var i = 0; i < settingsPercentiles.length; i++) {
             analyzeResult[i] = 800 - (settingsPercentiles[i] + subscriptionPercentiles[i] + adPercentiles[i]) * 400
-
+            // Generate position based on the percentiles
             var xpos = analyzeResult[i] * Math.cos(Math.PI * 2 * i / profileCount)
             var ypos = analyzeResult[i] * Math.sin(Math.PI * 2 * i / profileCount)
             var orbit = Math.cos(Math.PI * i) * 0.008 * (1 - analyzeResult[i]/800) * (1 - analyzeResult[i]/800)
