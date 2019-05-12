@@ -20,9 +20,9 @@ function draw() {
 
     textFont(font, 22);
     fill(255);
-    text("Hidden Space", 40, height - 80);
+    text("Hidden Systems", 40, height - 80);
     textFont(font, 16);
-    text("Simulating the YouTube Video Consumption System", 40, height - 60);
+    text("View the YouTube viewers", 40, height - 60);
 
     // Translate to center of window to draw the sun.
     translate(width / 2, height / 2);
