@@ -93,7 +93,8 @@ let profileCount = 0
 
 // const folderpath = '/Users/yz/Documents/Processing/sketch_190328a/'
 // const folderpath = '/Users/yz/Documents/GitHub/chrome-extension-youtube-analytics/p5/assets/'
-const folderpath = '/Users/yhw/Codes/github.com/hidden-space/p5/assets/'
+// const folderpath = '/Users/yhw/Codes/github.com/hidden-space/p5/assets/'
+const folderpath = __dirname + '/p5/assets'
 
 let obj = {
     planets: []
