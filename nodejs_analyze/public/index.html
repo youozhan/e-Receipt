@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Express File Upload</title>
+    <title>Data Upload</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,8 +13,8 @@
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h1>Express App File Uploads</h1>
-        <p>An example that uploads a user's file to your server.</p>
+        <h2>Hidden Systems - Data Upload</h2>
+        <p>Translate one profile into a system of values</p>
     </div>
 </div>
 
@@ -24,29 +24,55 @@
     </div>
 </nav>
 
-<div class="container text-center">
-    <div class="col-sm-12">
-        <div class="form">
-            <h1>Upload your stat receipt!</h1>
+<div class="container">
+    <form id="upload-form" action="/upload" enctype="multipart/form-data" method="POST" class="needs-validation"
+          novalidate>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-md-offset-2">
+                <h2>Fill additional information</h2>
 
-            <!-- IMAGE UPLOAD FORM -->
-            <form action="/upload" enctype="multipart/form-data" method="POST">
-
-                <div class="inner-wrap">
-                    <p><label><input type="file" id="youtubeStats" name="youtubeStats" /></label></p>
-                    <p class="button-section"><input type="submit" name="Upload" value="Upload"/></p>
+                <!-- OTHER INFO INPUTS -->
+                <div class="form-group row">
+                    <label for="age-group" class="col-sm-3 col-form-label">Age group</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="age-group" name="ageGroup" required>
+                            <option selected="selected" value="15-20">15-20</option>
+                            <option value="21-25">21-25</option>
+                            <option value="26-30">26-30</option>
+                            <option value="30+">30+</option>
+                        </select>
+                    </div>
                 </div>
-
+                <div class="form-group row">
+                    <label for="youtube-use" class="col-sm-3 col-form-label">Daily youtube usage (hours)</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="youtube-use" name="youtubeUse" value="5" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="stat-id" class="col-sm-3 col-form-label">Add a label</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="stat-id" name="idString" value="pgx" required>
+                    </div>
+                </div>
+            </div>
         </div>
-        </form>
 
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 col-md-offset-2">
+                <div class="form">
+                    <h2>Upload your receipt data</h2>
 
-    </div>
+                    <!-- IMAGE UPLOAD FORM -->
+                    <br>
+                    <label><input type="file" id="youtubeStats" name="youtubeStats"/></label>
+                    <input type="submit" name="Upload" value="Upload"/>
+
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
-</div>
-
-
-
 </body>
 </html>
 

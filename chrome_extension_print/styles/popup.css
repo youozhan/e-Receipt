@@ -9,3 +9,8 @@ body {
     margin-top: 18px;
     margin-bottom: 16px;
 }
+
+[type="checkbox"]:not(:checked):disabled+span:not(.lever):before {
+    border: 1px solid #7a7a7a;
+    background: #fff;
+}

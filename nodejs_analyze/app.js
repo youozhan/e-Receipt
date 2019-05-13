@@ -2,7 +2,8 @@ const glob = require('glob'),
     fs = require('fs'),
     express = require('express'),
     multer = require('multer'),
-    bodyParser = require('body-parser')
+    bodyParser = require('body-parser'),
+    moment = require('moment')
     // path = require('path')
 
 app = express()
@@ -18,16 +19,16 @@ const multerConfig = {
 
         //specify destination
         destination: function(req, file, next){
-            next(null, './data');
+            next(null, './data_raw')
         },
 
         //specify the filename to be unique
         filename: function(req, file, next){
-            console.log(file);
-            //get the file mimetype ie 'image/jpeg' split and prefer the second value ie'jpeg'
-            const ext = file.mimetype.split('/')[1];
+            console.log(file)
+            //get the file mimetype
+            const ext = file.mimetype.split('/')[1]
             //set the file fieldname to a unique name containing the original name, current datetime and the extension.
-            next(null, file.fieldname + '-' + Date.now() + '.'+ext);
+            next(null, `${file.fieldname}-${Date.now()}.${ext}`)
         }
     })
 }
@@ -36,8 +37,43 @@ app.get('/', (req, res) => {
     res.render('index.html')
 })
 
+
+const {promisify} = require('util'),
+    readFileAsync = promisify(fs.readFile),
+    writeFileAsync = promisify(fs.writeFile)
+
+// Handler for uploading files using express-upload
 app.post('/upload', multer(multerConfig).single('youtubeStats'), (req, res) => {
-    res.send('Complete! Check out your data folder.  Please note that files not encoded with an image mimetype are rejected. <a href="index.html">try again</a>');
+
+    async function enrichData() {
+        try {
+            // Access the raw uploads
+            const text = await readFileAsync(`./data_raw/${req.file.filename}`, {encoding: 'utf8'})
+
+            const statUploaded = JSON.parse(text)
+
+            const {ageGroup, youtubeUse, idString} = req.body
+
+            // Add metadata
+            statUploaded['ageGroup'] = ageGroup
+            statUploaded['youtubeUse'] = youtubeUse
+            statUploaded['idString'] = idString + moment().format("MMDD")
+
+
+            // Rewrite file to the real data file
+            await writeFileAsync(`./data/${req.file.filename}`, JSON.stringify(statUploaded))
+
+            updateStats()
+
+            console.log('Enriched data for stats json file:', req.file.filename)
+        } catch (err) {
+            console.log('Enrich data error:', err);
+        }
+    }
+
+    enrichData()
+
+    res.send('Complete! Check out your data folder. <a href="index.html">try again</a>')
 })
 
 
@@ -57,6 +93,8 @@ let profileCount = 0
 
 // const folderpath = '/Users/yz/Documents/Processing/sketch_190328a/'
 const folderpath = '/Users/yz/Documents/GitHub/chrome-extension-youtube-analytics/p5/assets/'
+// const folderpath = '/Users/yhw/Codes/github.com/hidden-space/p5/assets/'
+
 let obj = {
     planets: []
 }
@@ -71,6 +109,10 @@ function updateStats() {
         settingsPercentiles = []
         subscriptionPercentiles = []
         adPercentiles = []
+
+        let ageGroup = 0
+        let youtubeUse = 0
+        let idString = ""
 
         files.forEach(file => {
 
@@ -97,18 +139,23 @@ function updateStats() {
 
             profileCount = settingsOnAmounts.length
 
+            // Add additiona information
+            // {ageGroup, youtubeUse, idString} = profile
+            ageGroup = profile.ageGroup
+            youtubeUse = profile.youtubeUse
+            idString = profile.idString
 
         })
 
         // Convert result to position data
-        for (var i = 0; i < settingsPercentiles.length; i++) {
+        for (let i = 0; i < settingsPercentiles.length; i++) {
             analyzeResult[i] = 800 - (settingsPercentiles[i] + subscriptionPercentiles[i] + adPercentiles[i]) * 400
             // Generate position based on the percentiles
             var xpos = analyzeResult[i] * Math.cos(Math.PI * 2 * i / profileCount)
             var ypos = analyzeResult[i] * Math.sin(Math.PI * 2 * i / profileCount)
             var orbit = Math.cos(Math.PI * i) * 0.008 * (1 - analyzeResult[i]/800) * (1 - analyzeResult[i]/800)
             var moon = Math.round(subscriptionPercentiles[i] * 6)
-            var profileLabel = "anonymous" + String(i)
+            // var profileLabel = "anonymous" + String(i)
 
             obj.planets.push({
                 position: {
@@ -120,7 +167,7 @@ function updateStats() {
                 mooncount: moon,
                 moondistance: 36,
                 moondiameter: 12,
-                label: profileLabel
+                label: idString
             })
         }
 
@@ -140,13 +187,6 @@ function updateStats() {
     }, 2000)
 
 }
-
-
-// Handler for uploading files using express-upload
-app.post('/upload', (req, res) => {
-    updateStats()
-    console.log(req.files.datafile) // the uploaded file object
-})
 
 
 function getPercentile(amt, arr) {
