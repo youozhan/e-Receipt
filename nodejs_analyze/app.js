@@ -115,8 +115,6 @@ function updateStats() {
         let youtubeUses = []
         let idStrings = []
 
-        obj.planets = []
-
         files.forEach(file => {
 
             // Generage analytics for client
@@ -149,6 +147,8 @@ function updateStats() {
             idStrings.push(profile.idString)
 
         })
+
+        obj.planets = []
 
         // Convert result to position data
         for (let i = 0; i < settingsPercentiles.length; i++) {
