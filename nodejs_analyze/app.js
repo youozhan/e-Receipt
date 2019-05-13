@@ -110,9 +110,9 @@ function updateStats() {
         subscriptionPercentiles = []
         adPercentiles = []
 
-        let ageGroup = 0
-        let youtubeUse = 0
-        let idString = ""
+        let ageGroups = []
+        let youtubeUses = []
+        let idStrings = []
 
         files.forEach(file => {
 
@@ -141,9 +141,9 @@ function updateStats() {
 
             // Add additiona information
             // {ageGroup, youtubeUse, idString} = profile
-            ageGroup = profile.ageGroup
-            youtubeUse = profile.youtubeUse
-            idString = profile.idString
+            ageGroups.push(profile.ageGroup)
+            youtubeUses.push(profile.youtubeUse)
+            idStrings.push(profile.idString)
 
         })
 
@@ -167,7 +167,7 @@ function updateStats() {
                 mooncount: moon,
                 moondistance: 36,
                 moondiameter: 12,
-                label: idString
+                label: idStrings[i] 
             })
         }
 
