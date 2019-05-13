@@ -114,6 +114,8 @@ function updateStats() {
         let youtubeUses = []
         let idStrings = []
 
+        obj.planets = []
+
         files.forEach(file => {
 
             // Generage analytics for client
