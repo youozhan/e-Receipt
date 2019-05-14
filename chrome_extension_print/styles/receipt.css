@@ -1,8 +1,24 @@
 body {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: bold;
     width: 320px;
     background-color: #eee;
+}
+
+#printbutton {
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    background-color: #fefefe;
+    color: #383838;
+    padding: 6px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 80%;
+    /* margin-top: 2%; */
 }
 
 .invoice-box {
@@ -29,7 +45,7 @@ th {
 
 #logo {
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
     vertical-align: top;
 }
 
