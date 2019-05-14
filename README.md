@@ -1,7 +1,7 @@
 # Hidden Systems - View the YouTube viewers
 > Work in progress
 
-> Hidden Systems is a critical design project that both exhibits online and in a gallery space.
+Hidden Systems is a critical design project that both exhibits online and in a gallery space.
 
 ![receipt](https://github.com/youozhan/hidden-systems/blob/master/assets/01_receipt_m.gif)
 
