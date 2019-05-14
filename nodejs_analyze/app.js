@@ -73,7 +73,7 @@ app.post('/upload', multer(multerConfig).single('youtubeStats'), (req, res) => {
 
     enrichData()
 
-    res.send('Complete! Check out your data folder. <a href="index.html">try again</a>')
+    res.redirect("/uploaded.html")
 })
 
 
