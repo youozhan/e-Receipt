@@ -3,8 +3,9 @@
 
 > Hidden Systems is a critical design project that both exhibits online and in a gallery space.
 
-![receipt]()
-![visualization]()
+![receipt](https://github.com/youozhan/hidden-systems/blob/master/assets/01_receipt_m.gif)
+
+![visualization](https://github.com/youozhan/hidden-systems/blob/master/assets/02_viz_m.gif)
 
 The message that we often get from a system like YouTube is that algorithms are promoting our experience. Algorithms work together to teach us how to use tools, broadcast new movie trailers, and show us what is life like in another country. Hidden Systems tells the story of how algorithms' intention is more than that, or more precisely, is never that. 
 
