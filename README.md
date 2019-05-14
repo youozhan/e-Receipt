@@ -12,7 +12,7 @@ The message that we often get from a system like YouTube is that algorithms are 
 Hidden Systems examines and visualizes the algorithm's intention in the case of video-sharing platforms. It takes the form of a Chrome browser extension and a data visualization to scrape data from websites and produce a possible interpretation of the algorithm-controlled process within the system of video consumption. It is based on the recommendation system and the content monetization system from YouTube.
 
 ## Requirements
-Chrome browser
+Chrome browser (sign-in is required)
 
 ## Instructions
 #### Chrome Extension
@@ -35,7 +35,5 @@ Fill in additional information and add a label for you to identify yourself in t
 
 The data visualization is being presented on 6 E 16th Street 12th floor, New York NY and online [http://bit.ly/2JB408E](http://bit.ly/2JB408E)
 
-#### Contact
-Youchun Zhang
-
-zhany493@newschool.edu
+#### About the creator
+Hidden Systems is a Parsons MFADT thesis project created by Youchun (zhany493@newschool.edu)
