@@ -4,3 +4,4 @@ package-lock.json
 data/
 backup/
 p5/assets/data.json
+data_raw/
