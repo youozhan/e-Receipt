@@ -12,13 +12,25 @@ The message that we often get from a system like YouTube is that algorithms are 
 Hidden Systems examines and visualizes the algorithm's intention in the case of video-sharing platforms. It takes the form of a Chrome browser extension and a data visualization to scrape data from websites and produce a possible interpretation of the algorithm-controlled process within the system of video consumption. It is based on the recommendation system and the content monetization system from YouTube.
 
 ## Requirements
+Chrome browser
 
 ## Instructions
-Download the zip file and load the extension to Chrome
+#### Chrome Extension
+Download the file from [link](https://github.com/youozhan/hidden-systems/blob/master/chrome_extension.zip) and unzip to a local folder
+
 ![Install](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_01.gif)
 
-Open exmaple page one
+Follow the list in the popup window and navigate to the corresponding pages
+
 ![Google Data & Personalization](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_02.gif)
 
-Open example page two
-![Google Ad Setting](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_03.gif)
+Click on "generate receipt" to get a digital "summary" of the settings browsed
+
+Click on "download" to get the JSON format
+
+#### Data Visualization
+Participate in the exhibition by uploading your data to [http://bit.ly/2Q4w7y7](http://bit.ly/2Q4w7y7)
+
+Fill in additional information and add a label for you to identify yourself in the data visualization.
+
+The data visualization is being presented on 6 E 16th Street 12th floor, New York NY and online [http://bit.ly/2JB408E](http://bit.ly/2JB408E). 
