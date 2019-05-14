@@ -18,11 +18,11 @@ Chrome browser (sign-in is required)
 #### Chrome Extension
 Download the file from [link](https://github.com/youozhan/hidden-systems/blob/master/chrome_extension.zip) and unzip to a local folder
 
-![Install](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_01.gif)
+![Install](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_m_01.gif)
 
 Follow the list in the popup window and navigate to the corresponding pages
 
-![Google Data & Personalization](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_02.gif)
+![Google Data & Personalization](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_m_02.gif)
 
 Click on "generate receipt" to get a digital "summary" of the settings browsed
 
