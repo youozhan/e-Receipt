@@ -25,8 +25,11 @@ Follow the list in the popup window and navigate to the corresponding pages
 ![Google Data & Personalization](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_m_02.gif)
 
 Click on "generate receipt" to get a digital "summary" of the settings browsed
+
 ![Generate](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_m_03.gif)
+
 Click on "download" to get the JSON format
+
 ![Download](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_m_04.gif)
 
 #### Data Visualization
