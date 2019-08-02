@@ -37,6 +37,8 @@ Participate in the exhibition by uploading your data to [http://bit.ly/2Q4w7y7](
 
 Fill in additional information and add a label for you to identify yourself in the data visualization
 
+![Download](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_m_05.gif)
+
 The data visualization is being presented on 6 E 16th Street 12th floor, New York NY and online [http://bit.ly/2JB408E](http://bit.ly/2JB408E)
 
 #### About the creator
