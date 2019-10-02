@@ -33,7 +33,7 @@ Click on "download" to get the JSON format
 ![Download](https://github.com/youozhan/Smart-Receipt/blob/master/assets/print_m_04.gif)
 
 #### Data Visualization
-Participate in the exhibition by uploading your data to [http://bit.ly/2Q4w7y7](http://bit.ly/2Q4w7y7) (no identification infromation required)
+Participate in the exhibition by uploading your data to [http://bit.ly/2Q4w7y7](http://bit.ly/2Q4w7y7) (no identification information required)
 
 Fill in additional information and add a label for you to identify yourself in the data visualization
 
